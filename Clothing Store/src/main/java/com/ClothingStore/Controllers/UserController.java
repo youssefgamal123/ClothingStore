@@ -1,6 +1,7 @@
 package com.ClothingStore.Controllers;
 
 
+import com.ClothingStore.DTO.UserDto;
 import com.ClothingStore.Entities.User;
 import com.ClothingStore.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,11 @@ import java.util.Optional;
 @RequestMapping("/c")
 public class UserController {
 
-@Autowired
+    @Autowired
     UserService userService;
 
     @GetMapping(value = "/GetUsrById/{id}")
-    public Optional<User> GetUsrByid(@PathVariable int id ){
+    public UserDto GetUsrByid(@PathVariable int id ){
 
         return userService.GetUserByid(id);
     }

@@ -21,10 +21,10 @@ public class User {
     private int id;
 
     @Column(name = "Username")
-    private String Username; // for saving user name in the data base
+    private String username; // for saving user name in the data base
 
     @Column(name=  "Password")
-    private String Password; // for saving user's password in the database
+    private String password; // for saving user's password in the database
 
     @Column(name = "Email")
     private  String email;  // for saving email of the user in the database
