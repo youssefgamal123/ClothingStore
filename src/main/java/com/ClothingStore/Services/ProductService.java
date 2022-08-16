@@ -11,29 +11,16 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-
     @Autowired
     ProductRepository productRepository; // creating an object from product repository using dependancy injection
 
-
-
-     // get all products api
-    public List<Products> GetAllProducts(){
-
+    public List<Products> GetAllProducts() {
         return productRepository.findAll();
     }
 
-
-
-        // get product by id
-
-    public Optional<Products> GetProductByID(int id){
-        return  productRepository.findById(id);
+    public Optional<Products> GetProductByID(int id) {
+        return productRepository.findById(id);
     }
-
-
-
-    // create new product api
 
     public boolean CreateNewProduct(Products product) {
         // check if product is null
@@ -42,25 +29,17 @@ public class ProductService {
             return true;
         }
         return false;
-
     }
 
-
-
-
-    // delete by id api
-
-    public boolean DeleteByID(int id){
-        try{
-        // check if id equals zero
-        if (id !=0 ){
-            productRepository.deleteById(id);
-            return true; // returns true when entity is deleleted
-        }}
-        catch (Exception e){
-             }
-        return false ; // false when the  id is equal to zero
+    public boolean DeleteByID(int id) {
+        try {
+            // check if id equals zero
+            if (id != 0) {
+                productRepository.deleteById(id);
+                return true; // returns true when entity is deleleted
+            }
+        } catch (Exception e) {
+        }
+        return false; // false when the  id is equal to zero
     }
-
-
 }

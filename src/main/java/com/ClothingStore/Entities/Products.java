@@ -13,15 +13,15 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="Products")
+@Entity(name = "Products")
 public class Products {
 
     @Id // to make the id in the products primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // makes this column auto increamented
     @Column(name = "id")
-    private int id;
+    private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name; // to store the name of the clothing product
 
     @Column(name = "image")
@@ -36,7 +36,7 @@ public class Products {
     @Column(name = "Description")
     private String description;
 
-    @Column(name="price")
+    @Column(name = "price")
     private double price;
 
     @Column(name = "Added_To_Cart")

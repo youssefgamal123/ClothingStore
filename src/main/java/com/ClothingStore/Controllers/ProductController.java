@@ -5,7 +5,9 @@ import com.ClothingStore.Entities.Products;
 import com.ClothingStore.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,18 +19,17 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-
-        @GetMapping("/GetProducts")
-    public List<Products> GetAllProducts(){
+    @GetMapping("/GetProducts")
+    public List<Products> GetAllProducts() {
         return productService.GetAllProducts();
     }
 
     @GetMapping("/GetProduct/{id}")
-        public ResponseEntity<?> GetProductByID(@PathVariable int id ){
+    public ResponseEntity<?> GetProductByID(@PathVariable int id) {
 
-         Optional<Products> product = productService.GetProductByID(id);
+        Optional<Products> product = productService.GetProductByID(id);
 
-        if (!product.isPresent()){
+        if (!product.isPresent()) {
             return ResponseEntity.notFound().build(); // returns 404 not found
         }
 
@@ -36,19 +37,19 @@ public class ProductController {
     }
 
 
-
     @PostMapping("/AddProduct")
-    public boolean AddProduct(@RequestBody Products product){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public boolean AddProduct(@RequestBody Products product) {
 
         return productService.CreateNewProduct(product);
 
     }
 
-
     @DeleteMapping("/DeleteByID/{id}")
-    public boolean DeleteProduct(@PathVariable int id ){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public boolean DeleteProduct(@PathVariable int id) {
         productService.DeleteByID(id);
-        return true ; // if id doesn't exists , then basically it's deleted  :)
+        return true; // if id doesn't exists , then basically it's deleted  :)
     }
 
 
