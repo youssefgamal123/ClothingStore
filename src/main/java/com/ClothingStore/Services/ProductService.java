@@ -51,12 +51,14 @@ public class ProductService {
     // delete by id api
 
     public boolean DeleteByID(int id){
-
+        try{
         // check if id equals zero
         if (id !=0 ){
             productRepository.deleteById(id);
             return true; // returns true when entity is deleleted
-        }
+        }}
+        catch (Exception e){
+             }
         return false ; // false when the  id is equal to zero
     }
 
