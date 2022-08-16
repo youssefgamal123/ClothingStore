@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/c")
 public class ProductController {
 
@@ -17,7 +18,7 @@ public class ProductController {
     ProductService productService;
 
 
-    @GetMapping("/GetProducts")
+        @GetMapping("/GetProducts")
     public List<Products> GetAllProducts(){
         return productService.GetAllProducts();
     }
