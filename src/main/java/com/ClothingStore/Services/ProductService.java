@@ -18,7 +18,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Products> GetProductByID(int id) {
+    public Optional<Products> GetProductByID(Long id) {
         return productRepository.findById(id);
     }
 
@@ -31,7 +31,7 @@ public class ProductService {
         return false;
     }
 
-    public boolean DeleteByID(int id) {
+    public boolean DeleteByID(Long id) {
         try {
             // check if id equals zero
             if (id != 0) {

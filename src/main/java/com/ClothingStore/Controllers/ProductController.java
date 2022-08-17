@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/GetProduct/{id}")
-    public ResponseEntity<?> GetProductByID(@PathVariable int id) {
+    public ResponseEntity<?> GetProductByID(@PathVariable Long id) {
 
         Optional<Products> product = productService.GetProductByID(id);
 
@@ -38,16 +38,12 @@ public class ProductController {
 
 
     @PostMapping("/AddProduct")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public boolean AddProduct(@RequestBody Products product) {
-
         return productService.CreateNewProduct(product);
-
     }
 
     @DeleteMapping("/DeleteByID/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public boolean DeleteProduct(@PathVariable int id) {
+    public boolean DeleteProduct(@PathVariable Long id) {
         productService.DeleteByID(id);
         return true; // if id doesn't exists , then basically it's deleted  :)
     }

@@ -22,7 +22,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(UserDto usermodel) {
-        User user=new User();
+        User user = new User();
         user.setEmail(usermodel.getEmail());
         user.setUsername(usermodel.getUsername());
         user.setRole("USER");
@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        if(id != null){
+        if (id != null) {
             return userRepository.findById(id).get();
         }
         return null;
