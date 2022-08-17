@@ -23,7 +23,7 @@ public class User {
     private String username; // for saving user name in the data base
     @Column(name = "Password")
     private String password; // for saving user's password in the database
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     private String email;  // for saving email of the user in the database
     @Column(name = "role")
     private String role;
